@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const testimonials = [
   {
-    quote: "Godigitify didn't just run our campaigns — they built us a growth machine. Within 3 months we had a fully automated lead pipeline.",
-    name: "Arjun Mehta",
-    role: "Founder, The Uniques",
+    quote: "NexWeb didn't just run our campaigns — they built us a growth machine. Within 3 months we had a fully automated lead pipeline.",
+    name: "Ankur Gill",
+    role: "Founder, The Uniques, Super 60",
     initials: "AM",
   },
   {
