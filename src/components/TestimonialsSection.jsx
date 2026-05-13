@@ -3,14 +3,14 @@ import React, { useState } from "react";
 const testimonials = [
   {
     quote: "ScaleForage didn't just run our campaigns — they built us a growth machine. Within 3 months we had a fully automated lead pipeline.",
-    name: "Ankur Gill",
-    role: "Founder, The Uniques, Super 60",
-    initials: "AM",
+    name: "Sapna Arora",
+    role: "HOD, Super 60",
+    initials: "SA",
   },
   {
     quote: "The level of thinking they bring is unlike any agency we've worked with. They built a system that now generates enquiries on autopilot.",
     name: "Dr. Sandeep Sharma",
-    role: "Director, SVIET",
+    role: "Director, SVG",
     initials: "SS",
   },
   {
