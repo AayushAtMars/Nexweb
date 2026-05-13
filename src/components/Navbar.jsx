@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -19,13 +20,10 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 select-none" onClick={closeAll}>
-          {/* <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M6 26L16 6L26 26" stroke="#47216b" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M10 18H22" stroke="#47216b" strokeWidth="3.5" strokeLinecap="round" />
-          </svg> */}
+        <Link to="/" className="flex items-center gap-2.5 select-none" onClick={closeAll}>
+          <img src={logo} alt="Godigitify Logo" className="w-9 h-9 object-contain" />
           <span className="font-bold text-lg tracking-tight" style={{ color: "#2D1B69" }}>
-            NexWeb<sup className="text-xs font-normal">™</sup>
+            Godigitify<sup className="text-xs font-normal">™</sup>
           </span>
         </Link>
 
