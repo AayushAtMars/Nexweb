@@ -54,12 +54,12 @@ const Footer = () => {
           {/* Brand column */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-5">
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+              {/* <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
                 <path d="M6 26L16 6L26 26" stroke="#c4b8e8" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M10 18H22" stroke="#c4b8e8" strokeWidth="3.5" strokeLinecap="round" />
-              </svg>
+              </svg> */}
               <span className="text-white font-bold text-lg">
-                Godigitify<sup className="text-xs font-normal">™</sup>
+                NexWeb<sup className="text-xs font-normal">™</sup>
               </span>
             </Link>
             <p className="text-sm leading-relaxed mb-8" style={{ color: "#9ca3af" }}>
@@ -117,7 +117,7 @@ const Footer = () => {
           className="flex flex-col md:flex-row justify-between items-center pt-12 mt-12 border-t text-xs gap-4"
           style={{ borderColor: "#2d1b5e", color: "#6b7280" }}
         >
-          <p>© {new Date().getFullYear()} Godigitify™. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} NexWeb™. All rights reserved.</p>
           <p>Integrated growth systems for established businesses.</p>
         </div>
       </div>
