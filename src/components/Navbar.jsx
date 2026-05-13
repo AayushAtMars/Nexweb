@@ -23,7 +23,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-3 select-none" onClick={closeAll}>
           <img src={logo} alt="ScaleForage Logo" className="h-10 w-auto rounded-lg shadow-sm" />
           <span className="font-bold text-xl tracking-tight" style={{ color: "#130a21" }}>
-            ScaleForage<sup className="text-xs font-normal">™</sup>
+            ScaleForge<sup className="text-xs font-normal">™</sup>
           </span>
         </Link>
 
