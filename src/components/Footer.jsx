@@ -67,24 +67,7 @@ const Footer = () => {
               We architect integrated digital ecosystems that replace fragmented
               tactics with predictable, automated growth infrastructure.
             </p>
-            {/* Social icons */}
-            <div className="flex gap-3">
-              {[
-                { label: "Li", title: "LinkedIn" },
-                { label: "Tw", title: "Twitter" },
-                { label: "Ig", title: "Instagram" },
-              ].map(({ label, title }) => (
-                <a
-                  key={title}
-                  href="#"
-                  title={title}
-                  className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-bold transition-colors hover:border-[#a855f7] hover:text-[#a855f7]"
-                  style={{ borderColor: "#4b3a6b", color: "#9ca3af" }}
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
+
           </div>
 
           {/* Link columns */}

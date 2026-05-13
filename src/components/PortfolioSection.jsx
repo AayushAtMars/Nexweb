@@ -3,22 +3,25 @@ import React, { useState } from "react";
 const projects = [
   {
     title: "The Uniques",
-    desc: "See how we architected an end-to-end digital ecosystem connecting brand, technology, and automation for scalable growth. We reduced manual follow-up time by 80% and increased qualified leads by 3.4x in just 90 days.",
+    desc: "Developed a scalable digital ecosystem focused on branding, automation, and high-converting user experiences. The platform streamlines business operations, improves lead generation workflows, and delivers a modern web presence optimized for growth and engagement.",
     url: "https://theuniques.in",
   },
+
   {
     title: "SuperSixty",
-    desc: "Built a modern educational platform focused on innovation, mentorship, and career growth with a scalable and engaging digital experience.",
+    desc: "Built an innovation-driven educational platform designed to empower students through mentorship, technology, workshops, and career-focused learning initiatives. The ecosystem supports scalable learning experiences with a modern and interactive digital infrastructure.",
     url: "https://www.supersixty.in/",
   },
+
   {
     title: "SkillUp",
-    desc: "Developed a skill-based learning platform with interactive UI and optimized workflows for seamless user engagement and learning management.",
+    desc: "Created an intensive hands-on bootcamp platform for first-year students featuring practical coding sessions, mentor-led training, assessments, certifications, and interactive learning experiences focused on industry-ready development skills.",
     url: "https://skillup.supersixty.in/",
   },
+
   {
     title: "Google Ideate",
-    desc: "Created a collaborative innovation and ideation platform designed to empower students and creators through technology-driven initiatives.",
+    desc: "Designed a collaborative innovation and ideation platform that encourages creativity, teamwork, and problem-solving through technology-driven initiatives, workshops, and student innovation programs.",
     url: "https://ideate.supersixty.in/",
   },
 ];
@@ -32,13 +35,16 @@ const PortfolioSection = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-purple-100 text-[#a855f7] text-sm font-bold tracking-wide uppercase mb-6 shadow-sm">
+        <div className="text-center mb-16 relative">
+          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: "#47216b" }}>
             Systems in Action
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
+          </p>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4" style={{ color: "#130a21" }}>
             Infrastructure That Scales
           </h2>
+          <p className="text-sm md:text-base text-gray-500 font-medium leading-relaxed max-w-2xl mx-auto">
+            Explore our real-world deployments—where we connect technology, data, and workflows into powerful automated ecosystems.
+          </p>
         </div>
 
         {/* Custom Tabs (Carousel Controls) */}
@@ -89,7 +95,7 @@ const PortfolioSection = () => {
                 onMouseLeave={e => { e.currentTarget.style.backgroundColor = "#130a21"; }}
               >
                 Visit Live Website
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+
               </a>
             </div>
           </div>
