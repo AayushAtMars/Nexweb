@@ -6,15 +6,15 @@ const HeroSection = () => {
     <section className="w-full min-h-screen flex flex-col justify-center bg-gray-50 relative overflow-hidden">
       {/* ── Top Hero Block ─────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-12 relative z-10">
-        
+
         {/* ── Left Content ── */}
         <div className="flex-1 max-w-[650px]">
-          
+
           {/* Heading */}
           <div className="relative mb-6">
             {/* Decorative dot behind "Without" */}
-            <div className="absolute top-2 left-44 w-12 h-12 bg-[#130a21] rounded-full mix-blend-multiply opacity-90 hidden md:block"></div>
-            
+
+
             <h1 className="text-5xl md:text-6xl lg:text-[64px] font-bold leading-[1.1] tracking-tight relative z-10">
               <span style={{ color: "#47216b" }}>Scale </span>
               <span className="text-gray-900 font-medium">Without </span>
@@ -49,7 +49,7 @@ const HeroSection = () => {
               <div key={bold} className="flex items-start gap-2 w-full md:w-auto flex-1 min-w-[200px]">
                 <span className="text-[#47216b] text-sm mt-0.5">✓</span>
                 <span className="text-xs md:text-sm text-gray-600 leading-snug">
-                  <strong className="text-gray-800">{bold}</strong> <br className="hidden md:block lg:hidden"/> {text}
+                  <strong className="text-gray-800">{bold}</strong> <br className="hidden md:block lg:hidden" /> {text}
                 </span>
               </div>
             ))}
