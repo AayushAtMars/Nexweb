@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import logo from "../assets/logo.jpeg"
 const Footer = () => {
   const links = {
     Services: [
@@ -26,7 +26,7 @@ const Footer = () => {
   };
 
   return (
-    <footer style={{ backgroundColor: "#0f0520" }} className="w-full text-white">
+    <footer style={{ backgroundColor: "#130a21" }} className="w-full text-white">
       {/* CTA Banner */}
       <div className="w-full py-20 px-8 text-center" style={{ backgroundColor: "#1a0a3c" }}>
         <p className="text-xs font-semibold tracking-widest uppercase mb-4" style={{ color: "#c4b8e8" }}>
@@ -42,7 +42,7 @@ const Footer = () => {
         <Link
           to="/contact"
           className="inline-block px-8 py-4 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
-          style={{ backgroundColor: "#ffffff", color: "#1a0a3c" }}
+          style={{ backgroundColor: "#a855f7", color: "#ffffff" }}
         >
           Start Your Diagnostic →
         </Link>
@@ -53,13 +53,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-5">
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                <path d="M6 26L16 6L26 26" stroke="#c4b8e8" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M10 18H22" stroke="#c4b8e8" strokeWidth="3.5" strokeLinecap="round" />
-              </svg>
-              <span className="text-white font-bold text-lg">
-                Godigitify<sup className="text-xs font-normal">™</sup>
+            <Link to="/" className="flex flex-col items-start gap-4 mb-5">
+              <img
+                alt="ScaleForage Logo"
+                className="w-24 h-auto object-contain rounded-xl"
+                src={logo}
+              />
+              <span className="text-white font-bold text-2xl tracking-wide">
+                ScaleForage<sup className="text-xs font-normal">™</sup>
               </span>
             </Link>
             <p className="text-sm leading-relaxed mb-8" style={{ color: "#9ca3af" }}>
@@ -77,7 +78,7 @@ const Footer = () => {
                   key={title}
                   href="#"
                   title={title}
-                  className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-bold transition-colors hover:border-white hover:text-white"
+                  className="w-9 h-9 rounded-full border flex items-center justify-center text-xs font-bold transition-colors hover:border-[#a855f7] hover:text-[#a855f7]"
                   style={{ borderColor: "#4b3a6b", color: "#9ca3af" }}
                 >
                   {label}
@@ -100,7 +101,7 @@ const Footer = () => {
                   <li key={label}>
                     <Link
                       to={to}
-                      className="text-sm transition-colors hover:text-white"
+                      className="text-sm transition-colors hover:text-[#a855f7]"
                       style={{ color: "#9ca3af" }}
                     >
                       {label}
@@ -117,7 +118,7 @@ const Footer = () => {
           className="flex flex-col md:flex-row justify-between items-center pt-12 mt-12 border-t text-xs gap-4"
           style={{ borderColor: "#2d1b5e", color: "#6b7280" }}
         >
-          <p>© {new Date().getFullYear()} Godigitify™. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ScaleForage™. All rights reserved.</p>
           <p>Integrated growth systems for established businesses.</p>
         </div>
       </div>
@@ -126,3 +127,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
