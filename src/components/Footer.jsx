@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -53,13 +54,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-5">
-              {/* <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                <path d="M6 26L16 6L26 26" stroke="#c4b8e8" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M10 18H22" stroke="#c4b8e8" strokeWidth="3.5" strokeLinecap="round" />
-              </svg> */}
+            <Link to="/" className="flex items-center gap-2.5 mb-5">
+              <img src={logo} alt="Godigitify Logo" className="w-9 h-9 object-contain brightness-0 invert opacity-80" />
               <span className="text-white font-bold text-lg">
-                NexWeb<sup className="text-xs font-normal">™</sup>
+                Godigitify<sup className="text-xs font-normal">™</sup>
               </span>
             </Link>
             <p className="text-sm leading-relaxed mb-8" style={{ color: "#9ca3af" }}>
