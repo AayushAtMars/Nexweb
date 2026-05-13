@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../layouts/Layout";
 
 const services = [
@@ -70,108 +70,182 @@ const services = [
   },
 ];
 
-const ServicesPage = () => {
-  const [hovered, setHovered] = useState(null);
+const TiltCard = ({ icon, title, tag, desc, points }) => {
+  const cardRef = useRef(null);
+  const [style, setStyle] = useState({ 
+    transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)' 
+  });
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+    
+    const rotateX = ((y / height) - 0.5) * -10; 
+    const rotateY = ((x / width) - 0.5) * 10;
+    
+    setStyle({
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`,
+      transition: 'none'
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setStyle({
+      transform: `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
+      transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
+    });
+  };
 
   return (
-    <Layout>
-      {/* Hero Banner */}
-      <section style={{ backgroundColor: "#f5f4fc" }} className="w-full py-28">
-        <div className="max-w-7xl mx-auto px-8 text-center">
-          <span className="text-xs font-semibold tracking-widest uppercase mb-4 block" style={{ color: "#47216b" }}>
-            What We Do
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="group relative overflow-hidden rounded-3xl bg-white p-8 sm:p-10 border border-[#ede8f8] cursor-pointer z-10"
+      style={{ ...style, boxShadow: "0 4px 20px rgba(71,33,107,0.04)" }}
+    >
+      {/* Interactive Hover Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#47216b] to-[#1a0a3c] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      
+      <div className="relative z-10 flex h-full flex-col">
+        {/* Header: Icon & Tag */}
+        <div className="flex items-start justify-between mb-8">
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-colors duration-500 bg-[#f5f4fc] text-[#47216b] group-hover:bg-white/10 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            {icon}
+          </div>
+          <span className="text-xs font-bold px-3.5 py-1.5 rounded-full transition-colors duration-500 bg-[#f5f4fc] text-[#47216b] group-hover:bg-white/15 group-hover:text-white">
+            {tag}
           </span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" style={{ color: "#1a0a3c" }}>
-            Services Built for <br />
-            <span className="font-light italic">Scalable Growth</span>
-          </h1>
-          <p className="text-base max-w-2xl mx-auto leading-relaxed" style={{ color: "#4b5563" }}>
-            Every service we offer is a component of a larger growth system.
-            We don't sell standalone tactics — we build interconnected
-            infrastructure that drives compounding results.
-          </p>
         </div>
-      </section>
+
+        {/* Text Content */}
+        <h3 className="text-2xl font-bold mb-4 transition-colors duration-500 text-[#1a0a3c] group-hover:text-white">
+          {title}
+        </h3>
+        <p className="text-sm leading-relaxed mb-4 transition-colors duration-500 text-[#4b5563] group-hover:text-white/80">
+          {desc}
+        </p>
+
+        {/* Expandable Points (Slides down on hover) */}
+        <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 group-hover:grid-rows-[1fr] group-hover:opacity-100">
+          <div className="overflow-hidden">
+            <ul className="space-y-3 pt-6 border-t border-white/10 mt-2">
+              {points.map((p, i) => (
+                <li key={p} className="flex items-start gap-3 text-sm font-medium text-white/95" style={{ transitionDelay: `${i * 50}ms` }}>
+                  <svg className="w-5 h-5 text-[#c4b5fd] flex-shrink-0 mt-px" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer Link */}
+        <div className="mt-auto pt-8 flex items-center gap-2 text-sm font-bold transition-colors duration-500 text-[#47216b] group-hover:text-[#c4b5fd]">
+          Explore Service
+          <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const InteractiveHero = () => {
+  const [mouse, setMouse] = useState({ x: 50, y: 50 });
+  const handleMouseMove = (e) => {
+    const { clientX, clientY, currentTarget } = e;
+    const { left, top, width, height } = currentTarget.getBoundingClientRect();
+    setMouse({
+      x: ((clientX - left) / width) * 100,
+      y: ((clientY - top) / height) * 100,
+    });
+  };
+
+  return (
+    <section 
+      onMouseMove={handleMouseMove}
+      className="relative w-full py-32 overflow-hidden"
+      style={{ backgroundColor: "#f5f4fc" }}
+    >
+      {/* Interactive Cursor Follower Gradient */}
+      <div 
+        className="absolute inset-0 opacity-80 transition-all duration-300 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle 700px at ${mouse.x}% ${mouse.y}%, rgba(167,139,250,0.15), transparent 80%)`
+        }}
+      />
+      
+      {/* Decorative Blueprint Grid */}
+      <div 
+        className="absolute inset-0 opacity-[0.04] pointer-events-none" 
+        style={{ 
+          backgroundImage: "linear-gradient(#47216b 1px, transparent 1px), linear-gradient(90deg, #47216b 1px, transparent 1px)", 
+          backgroundSize: "48px 48px" 
+        }} 
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-8 text-center flex flex-col items-center">
+        <span 
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-8 bg-white border shadow-sm" 
+          style={{ color: "#47216b", borderColor: "#ede8f8" }}
+        >
+          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#a855f7" }} />
+          What We Do
+        </span>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tight" style={{ color: "#1a0a3c" }}>
+          Services Built for <br />
+          <span className="font-light italic" style={{ color: "#47216b" }}>Scalable Growth</span>
+        </h1>
+        <p className="text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "#4b5563" }}>
+          Every service we offer is a component of a larger growth system.
+          We don't sell standalone tactics — we build interconnected
+          infrastructure that drives compounding results.
+        </p>
+      </div>
+    </section>
+  );
+};
+
+const ServicesPage = () => {
+  return (
+    <Layout>
+      <InteractiveHero />
 
       {/* Services Grid */}
-      <section className="w-full py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-8">
+      <section className="relative w-full pb-32 bg-white pt-20">
+        {/* Faded top border for smooth transition from hero */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#f5f4fc] to-white pointer-events-none" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map(({ icon, title, tag, desc, points }, i) => (
-              <div
-                key={i}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-                className="rounded-2xl p-8 border transition-all duration-300 flex flex-col cursor-pointer"
-                style={{
-                  borderColor: hovered === i ? "#47216b" : "#ede8f8",
-                  backgroundColor: hovered === i ? "#f5f4fc" : "#fff",
-                  transform: hovered === i ? "translateY(-4px)" : "translateY(0)",
-                  boxShadow: hovered === i ? "0 12px 40px rgba(71,33,107,0.1)" : "none",
-                }}
-              >
-                {/* Icon & Tag */}
-                <div className="flex items-start justify-between mb-5">
-                  <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: "#ede8f8", color: "#47216b" }}
-                  >
-                    {icon}
-                  </div>
-                  <span
-                    className="text-xs font-semibold px-3 py-1 rounded-full"
-                    style={{ backgroundColor: "#ede8f8", color: "#47216b" }}
-                  >
-                    {tag}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold mb-3" style={{ color: "#1a0a3c" }}>
-                  {title}
-                </h3>
-                <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: "#4b5563" }}>
-                  {desc}
-                </p>
-
-                {/* Points */}
-                <ul className="space-y-2 mb-6">
-                  {points.map((p) => (
-                    <li key={p} className="flex items-center gap-2 text-xs" style={{ color: "#4b5563" }}>
-                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#47216b" }} />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#"
-                  className="text-xs font-bold flex items-center gap-1.5 mt-auto"
-                  style={{ color: "#47216b" }}
-                >
-                  Learn More
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
+            {services.map((service, i) => (
+              <TiltCard key={i} {...service} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <section style={{ backgroundColor: "#1a0a3c" }} className="w-full py-24">
-        <div className="max-w-3xl mx-auto px-8 text-center">
+      <section className="relative w-full py-24 overflow-hidden" style={{ backgroundColor: "#1a0a3c" }}>
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        
+        <div className="relative z-10 max-w-3xl mx-auto px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-5">
             Not Sure Which Service You Need?
           </h2>
-          <p className="text-sm mb-10" style={{ color: "#c4b8e8" }}>
+          <p className="text-sm md:text-base mb-10 leading-relaxed" style={{ color: "#c4b8e8" }}>
             Start with our free Growth Diagnostic. In 30 minutes, we'll identify
-            exactly which systems will move the needle for your business.
+            exactly which systems will move the needle for your business right now.
           </p>
           <a
             href="/contact"
-            className="inline-block px-8 py-4 rounded-full text-sm font-bold bg-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full text-sm font-bold bg-white transition-transform hover:scale-105 hover:shadow-xl"
             style={{ color: "#1a0a3c" }}
           >
             Book a Free Diagnostic

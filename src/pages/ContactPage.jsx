@@ -111,7 +111,7 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Right — Form */}
+          {/* Right — Forms */}
           <div className="flex-1">
             {sent ? (
               <div className="rounded-3xl border p-16 text-center h-full flex flex-col items-center justify-center" style={{ borderColor: "#ede8f8", backgroundColor: "#faf8ff" }}>
