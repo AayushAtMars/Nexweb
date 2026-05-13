@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.jpeg";
 
 const Navbar = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -20,10 +20,10 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 select-none" onClick={closeAll}>
-          <img src={logo} alt="Godigitify Logo" className="w-9 h-9 object-contain" />
-          <span className="font-bold text-lg tracking-tight" style={{ color: "#2D1B69" }}>
-            Godigitify<sup className="text-xs font-normal">™</sup>
+        <Link to="/" className="flex items-center gap-3 select-none" onClick={closeAll}>
+          <img src={logo} alt="ScaleForage Logo" className="h-10 w-auto rounded-lg shadow-sm" />
+          <span className="font-bold text-xl tracking-tight" style={{ color: "#130a21" }}>
+            ScaleForage<sup className="text-xs font-normal">™</sup>
           </span>
         </Link>
 
@@ -35,7 +35,7 @@ const Navbar = () => {
             <button
               onClick={() => { setServicesOpen(!servicesOpen); setSolutionsOpen(false); }}
               className="flex items-center gap-1 transition-colors duration-200 cursor-pointer"
-              style={{ color: servicesOpen ? "#47216b" : undefined }}
+              style={{ color: servicesOpen ? "#a855f7" : undefined }}
             >
               Services
               <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ const Navbar = () => {
                     onClick={closeAll}
                     className="flex flex-col px-4 py-2.5 hover:bg-purple-50 transition-colors group"
                   >
-                    <span className="text-sm font-medium group-hover:text-purple-700" style={{ color: "#1a0a3c" }}>{label}</span>
+                    <span className="text-sm font-medium group-hover:text-[#a855f7]" style={{ color: "#130a21" }}>{label}</span>
                     <span className="text-xs" style={{ color: "#9ca3af" }}>{desc}</span>
                   </Link>
                 ))}
@@ -71,7 +71,7 @@ const Navbar = () => {
             <button
               onClick={() => { setSolutionsOpen(!solutionsOpen); setServicesOpen(false); }}
               className="flex items-center gap-1 transition-colors duration-200 cursor-pointer"
-              style={{ color: solutionsOpen ? "#47216b" : undefined }}
+              style={{ color: solutionsOpen ? "#a855f7" : undefined }}
             >
               Solutions
               <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,7 @@ const Navbar = () => {
                     onClick={closeAll}
                     className="flex flex-col px-4 py-2.5 hover:bg-purple-50 transition-colors group"
                   >
-                    <span className="text-sm font-medium group-hover:text-purple-700" style={{ color: "#1a0a3c" }}>{label}</span>
+                    <span className="text-sm font-medium group-hover:text-[#a855f7]" style={{ color: "#130a21" }}>{label}</span>
                     <span className="text-xs" style={{ color: "#9ca3af" }}>{desc}</span>
                   </Link>
                 ))}
@@ -111,8 +111,8 @@ const Navbar = () => {
               <Link
                 to={to}
                 onClick={closeAll}
-                className="transition-colors duration-200 hover:text-purple-700"
-                style={{ color: isActive(to) ? "#47216b" : undefined, fontWeight: isActive(to) ? "600" : undefined }}
+                className="transition-colors duration-200 hover:text-[#a855f7]"
+                style={{ color: isActive(to) ? "#a855f7" : undefined, fontWeight: isActive(to) ? "600" : undefined }}
               >
                 {label}
               </Link>
@@ -125,16 +125,16 @@ const Navbar = () => {
           to="/contact"
           onClick={closeAll}
           className="hidden md:inline-block border text-sm font-medium px-5 py-2 rounded-md transition-all duration-200 hover:text-white"
-          style={{ borderColor: "#47216b", color: "#47216b" }}
-          onMouseEnter={e => { e.currentTarget.style.backgroundColor = "#47216b"; e.currentTarget.style.color = "#fff"; }}
-          onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#47216b"; }}
+          style={{ borderColor: "#a855f7", color: "#a855f7" }}
+          onMouseEnter={e => { e.currentTarget.style.backgroundColor = "#a855f7"; e.currentTarget.style.color = "#fff"; }}
+          onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "#a855f7"; }}
         >
           Start Diagnostic
         </Link>
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-gray-700 transition-colors"
+          className="md:hidden text-gray-700 transition-colors hover:text-[#a855f7]"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -161,7 +161,7 @@ const Navbar = () => {
               key={label}
               to={to}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-sm font-medium text-gray-700 hover:text-purple-700 transition-colors"
+              className="text-sm font-medium text-gray-700 hover:text-[#a855f7] transition-colors"
             >
               {label}
             </Link>
@@ -169,8 +169,8 @@ const Navbar = () => {
           <Link
             to="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="border text-sm font-medium px-5 py-2 rounded-md text-center mt-2 transition-all"
-            style={{ borderColor: "#47216b", color: "#47216b" }}
+            className="border text-sm font-medium px-5 py-2 rounded-md text-center mt-2 transition-all hover:bg-[#a855f7] hover:text-white"
+            style={{ borderColor: "#a855f7", color: "#a855f7" }}
           >
             Start Diagnostic
           </Link>
