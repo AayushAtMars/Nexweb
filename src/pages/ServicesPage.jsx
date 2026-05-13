@@ -103,7 +103,6 @@ const TiltCard = ({ icon, title, tag, desc, points }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={style}
       className="group relative overflow-hidden rounded-3xl bg-white p-8 sm:p-10 border border-[#ede8f8] cursor-pointer z-10"
       style={{ ...style, boxShadow: "0 4px 20px rgba(71,33,107,0.04)" }}
     >
