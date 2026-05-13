@@ -119,11 +119,7 @@ const Footer = () => {
           className="flex flex-col md:flex-row justify-between items-center pt-12 mt-12 border-t text-xs gap-4"
           style={{ borderColor: "#2d1b5e", color: "#6b7280" }}
         >
-<<<<<<< HEAD
           <p>© {new Date().getFullYear()} ScaleForage™. All rights reserved.</p>
-=======
-          <p>© {new Date().getFullYear()} NexWeb™. All rights reserved.</p>
->>>>>>> 4b49fa99127974662afd89810b528d2510614542
           <p>Integrated growth systems for established businesses.</p>
         </div>
       </div>
